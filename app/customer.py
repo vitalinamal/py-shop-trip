@@ -8,13 +8,13 @@ class Customer:
             product_cart: dict,
             location: list[int],
             money: float,
-            car: Car
+            car: dict
     ) -> None:
         self.name = name
         self.product_cart = product_cart
         self.location = location
         self.money = money
-        self.car = car
+        self.car = Car(**car)
 
     def calculate_trip_cost(
             self,

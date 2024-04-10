@@ -1,19 +1,16 @@
 import json
 
-from app.car import Car
 from app.customer import Customer
 from app.shop import Shop
 
 
 def shop_trip() -> None:
-
     with open("app/config.json", "r") as file:
         config = json.load(file)
     fuel_price = config["FUEL_PRICE"]
 
     shops = [Shop(**shop) for shop in config["shops"]]
-    customers = [Customer(**{**customer, "car": Car(**customer["car"])})
-                 for customer in config["customers"]]
+    customers = [Customer(**customer) for customer in config["customers"]]
 
     for customer in customers:
         print(f"{customer.name} has {customer.money} dollars")
