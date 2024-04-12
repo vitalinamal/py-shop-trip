@@ -10,7 +10,6 @@ def shop_trip() -> None:
 
     fuel_price = config["FUEL_PRICE"]
     shops = [Shop(**shop) for shop in config["shops"]]
-    customers = [Customer(**customer) for customer in config["customers"]]
 
-    for customer in customers:
-        customer.go_shopping(fuel_price, shops)
+    for customer in config["customers"]:
+        Customer(**customer).go_shopping(fuel_price, shops)
